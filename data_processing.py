@@ -112,10 +112,10 @@ class Table:
     def update_row(self, primary_attribute, primary_attribute_value, update_attribute, update_value):
         dict1, dict2 = {}, {}
         for item in self.table:
-            if primary_attribute[item] != update_attribute[item]:
-                dict1 = copy.copy(update_attribute[item])
-            if primary_attribute_value[item] != update_value[item]:
-                dict2 = copy.copy(update_value[item])
+            if primary_attribute.keys(item) != update_attribute.keys(item):
+                dict1 = copy.copy(update_attribute.keys(item))
+            if primary_attribute_value.keys(item) != update_value.keys(item):
+                dict2 = copy.copy(update_value.keys(item))
             final_dict = dict1.append(dict2)
             return final_dict
         '''
@@ -152,3 +152,5 @@ dict['Rotten Tomatoes %'] = '92'
 dict['Worldwide Gross'] = '195.3'
 dict['Year'] = '2017'
 
+table1.update_row('Film', 'A Serious Man', 'Year', '2022')
+print(table1)

@@ -133,13 +133,11 @@ my_DB = DB()
 my_DB.insert(table1)
 
 print('The average value of ‘Worldwide Gross’ for ‘Comedy’ movies')
-avg_comedy = table1.aggregate(lambda x: sum(x)/len(x), 'Worldwide Gross')
-print(f'{avg_comedy:.2f}')
+print(table1.aggregate(lambda x: sum(x)/len(x), 'Worldwide Gross'))
 print()
 
 print('The minimum ‘Audience score %’ for ‘Drama’ movies')
-min_drama = table1.aggregate(lambda x: min(x), 'Audience score %')
-print(min_drama)
+print(table1.aggregate(lambda x: min(x), 'Audience score %'))
 print()
 
 dict = {}

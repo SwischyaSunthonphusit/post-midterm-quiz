@@ -103,6 +103,27 @@ class Table:
             pivot_table.append([item, aggregate_val_list])
         return pivot_table
 
+    def insert_row(self, dict):
+        self.table.append(dict)
+        '''
+        This method inserts a dictionary, dict, into a Table object, effectively adding a row to the Table.
+        '''
+
+    def update_row(self, primary_attribute, primary_attribute_value, update_attribute, update_value):
+        dict1, dict2 = {}, {}
+        for item in self.table:
+            if primary_attribute[item] != update_attribute[item]:
+                dict1 = copy.copy(update_attribute[item])
+            if primary_attribute_value[item] != update_value[item]:
+                dict2 = copy.copy(update_value[item])
+            final_dict = dict1.append(dict2)
+            return final_dict
+        '''
+        This method updates the current value of update_attribute to update_value
+        For example, my_table.update_row('Film', 'A Serious Man', 'Year', '2022') will change the 'Year' attribute for the 'Film'
+        'A Serious Man' from 2009 to 2022
+        '''
+
     def __str__(self):
         return self.table_name + ':' + str(self.table)
 
@@ -119,3 +140,15 @@ print()
 print('The minimum ‘Audience score %’ for ‘Drama’ movies')
 min_drama = table1.aggregate(lambda x: min(x), 'Audience score %')
 print(min_drama)
+print()
+
+dict = {}
+dict['Film'] = 'The Shape of Water'
+dict['Genre'] = 'Fantasy'
+dict['Lead Studio'] = 'Fox'
+dict['Audience score %'] = '72'
+dict['Profitability'] = '9.765'
+dict['Rotten Tomatoes %'] = '92'
+dict['Worldwide Gross'] = '195.3'
+dict['Year'] = '2017'
+
